@@ -23,6 +23,9 @@
 4. Node中通过require函数引入外部模块
 
 5. 每一个js文件中的js代码都是独立运行在一个闭包中
+(当node在执行模块中的代码时候，它会首先在代码的最顶部，添加如下代码
+    function(exports,require,module,__filename,__dirname)
+)
 
 6. 暴露模块中的变量和函数
 
@@ -31,3 +34,24 @@
 1. 内建模块
 2. 文件模块
 3. 核心模块
+
+
+### 包裹函数的内部参数
+当node在执行模块中的代码时候，它会首先在代码的最顶部，添加如下代码 
+
+```javascript
+
+（function(exports,require,module,__filename,__dirname){
+    exports = module.exports ={}
+    // exports.outVar = 'out'
+    // exports = {outVar: 'out'}
+    return module.exports;
+})
+
+```
+
+1. exports: 该对象用来将含糊内部的局部变量或局部函数暴露到外部
+2. require: 用来引入外部的模块
+3. module: 代表的是当前模块本身 exports就是module的属性
+4. __filename: 当前模块的完整路径
+5. __dirname: 当前模块所在文件夹的完整路径
