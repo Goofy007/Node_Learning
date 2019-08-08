@@ -55,3 +55,8 @@
 3. module: 代表的是当前模块本身 exports就是module的属性
 4. __filename: 当前模块的完整路径
 5. __dirname: 当前模块所在文件夹的完整路径
+
+### exports和module.exports的区别
+exports === module.exports exports类似于一个指针 指向module.exports对象
+使用exports.A 与 module.exports.A相同
+module.exports可以导出一个对象{ },  exports不能
